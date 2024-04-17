@@ -113,17 +113,48 @@
                 </div>
             </section>
 
-            <!--=============== ABOUT ===============-->
+            <!--=============== CARD ===============-->
             <section class="container section section__height" id="card">
-                <h2 class="section__title">Card</h2>
+              <div class="section-form">
+                  <div class="container-form">
+                      <form action="#" method="POST">
+          
+                          <!--  Bank Name  -->
+                          <div class="form-group full-width">
+                            <label for="bank__name">Bank Name</label>
+                            <input type="text" id="bank__name" name="address1" placeholder="Enter Bank Name" required>
+                          </div>
+          
+                          <!--  Card Number  -->
+                          <div class="form-group full-width">
+                            <label for="card__no">Card Number</label>
+                            <input type="number" id="card__no" name="address2" placeholder="Enter Card Number">
+                          </div>
+
+                          <!--  First Name and Last Name  -->
+                          <div class="form-group row full-width">
+                            <div class="col first">
+                              <label for="expiry__day"><Name>Expiry Day</Name></label>
+                              <input type="text" id="expiry__day" name="firstName" placeholder="MM/YY" required>
+                            </div>
+                            <div class="col">
+                              <label for="cvv">CVV</label>
+                              <input type="number" id="cvv" name="lastName" placeholder="CVV" required>
+                            </div>
+                          </div>
+                        
+                          <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+              </div>
             </section>
 
-            <!--=============== SKILLS ===============-->
+            <!--=============== TRANSACTIONS ===============-->
             <section class="container section section__height" id="transactions">
                 <h2 class="section__title">Transactions</h2>
             </section>
 
-            <!--=============== PORTFOLIO ===============-->
+            <!--=============== ME ===============-->
             <section class="container section section__height" id="me">
                 <h2 class="section__title">Me</h2>
             </section>
