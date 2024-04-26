@@ -9,4 +9,4 @@
 ## CSS
 * [CSS](./css): Folder of css files.
 
-** *The project want to enable Payment through NFT* **
+*This project is about how to enable Payment through NFT*
