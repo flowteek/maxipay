@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC Payment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>NFC Payment</h2>
+        <form id="paymentForm">
+            <div class="form-group">
+                <label for="amount">Enter Amount to Pay:</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+            </div>
+            <button type="button" id="simulateNFC">Pay Now</button>
+        </form>
+        <div id="paymentStatus"></div>
+    </div>
+
+    <script>
+        document.getElementById('simulateNFC').addEventListener('click', function() {
+            // Simulate NFC interaction
+            var amount = document.getElementById('amount').value;
+            initiatePayment(amount);
+        });
+
+        async function initiatePayment(amount) {
+            try {
+                const nfcPermission = await navigator.permissions.query({ name: 'nfc' });
+                if (nfcPermission.state === 'granted') {
+                    const nfcReader = new NDEFReader();
+                    nfcReader.addEventListener('reading', async event => {
+                        const tag = event.message.records[0].data;
+                        await sendNFCPaymentRequest(amount, tag);
+                        nfcReader.scan(); // Continue scanning for more tags
+                    });
+                    await nfcReader.scan();
+                } else {
+                    console.error('NFC permission denied by the user.');
+                }
+            } catch (error) {
+                console.error('Error accessing NFC functionality:', error);
+            }
+        }
+
+        async function sendNFCPaymentRequest(amount, tag) {
+            // Send NFC payment request with amount and tag data
+            const paymentRequest = {
+                user_id: 'user1', // User identifier
+                amount: amount, // Transaction amount
+                tag_data: tag // NFC tag data
+            };
+
+            // Simulated response from NFC payment processing
+            const response = {
+                status: 'success', // Simulated payment status
+                message: 'Payment successful' // Simulated payment message
+            };
+
+            displayPaymentStatus(response);
+        }
+
+        function displayPaymentStatus(response) {
+            const paymentStatusElement = document.getElementById('paymentStatus');
+            if (response.status === 'success') {
+                paymentStatusElement.innerHTML = '<div class="success">' + response.message + '</div>';
+            } else {
+                paymentStatusElement.innerHTML = '<div class="error">' + response.message + '</div>';
+            }
+        }
+    </script>
+</body>
+</html>

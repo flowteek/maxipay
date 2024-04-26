@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="css/styles.css">
+
+        <title>PayFly</title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">Ajose</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">
+                                <i class="fa-solid fa-house nav__icon"></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="#card" class="nav__link">
+                                <i class="fa-solid fa-wallet nav__icon"></i>
+                                <span class="nav__name">Cards</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#transactions" class="nav__link">
+                                <i class="fa-solid fa-chart-pie nav__icon"></i>
+                                <span class="nav__name">Transactions</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="#me" class="nav__link">
+                                <i class="fa-solid fa-user nav__icon"></i>
+                                <span class="nav__name">Me</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="image/perfil.png" alt="" class="nav__img">
+            </nav>
+        </header>
+
+        <main>
+            <!--=============== HOME ===============-->
+            <section class="container section section__height" id="home">
+                <div class="container-card">
+                    <div class="card">
+                      <div class="card-inner">
+                        <div class="front">
+                          <div class="row">
+                            <img
+                              src="pngtree-credit-card-chip-shopping-png-image_11198229.png"
+                              width="50px"
+                            />
+                            <img src="image/MasterCard-Logo-1990.png" width="70px"  />
+                          </div>
+                          <div class="row card-no">
+                            <p>****</p>
+                            <p>****</p>
+                            <p>****</p>
+                            <p>**53</p>
+
+                          </div>
+                          <div class="row card-holder">
+                            <p class="smaller">Card Holder</p>
+                            <p class="smaller">Valid Till</p>
+                          </div>
+                          <div class="row name">
+                            <p>Orkhan Aslanov</p>
+                            <p>15/25</p>
+                          </div>
+                        </div>
+                        <div class="back">
+                          <img
+                            src="/images/black-wavy-shapes-background_79603-1364.jpg"
+                            class="map-img"
+                          />
+                          <div class="bar"></div>
+                          <div class="row card-cvv">
+                            <div>
+                              <img src="/images/istockphoto-1359818120-612x612.jpg" />
+                            </div>
+                            <p>555</p>
+                          </div>
+                          <div class="row signature">
+                            <p>Customer Signature</p>
+                            <img src="/images/MasterCard-Logo-1990.png" width="80px" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="authenticate">
+                    <div class="circle" >
+                        <img src="image/faceid.png" alt="">
+                        <br>
+                        <button  id="startNFC">Tap and Pay</button>
+                        <div id="paymentStatus"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== CARD ===============-->
+            <section class="container section section__height" id="card">
+              <div class="section-form">
+                  <div class="container-form">
+                      <form action="validate.php" method="POST">
+          
+                          <!--  Bank Name  -->
+                          <div class="form-group full-width">
+                            <label for="bank__name">Bank Name</label>
+                            <input type="text" id="bank__name" name="address1" placeholder="Enter Bank Name" required>
+                          </div>
+          
+                          <!--  Card Number  -->
+                          <div class="form-group full-width">
+                            <label for="card__no">Card Number</label>
+                            <input type="number" id="card__no" name="address2" placeholder="Enter Card Number">
+                          </div>
+
+                          <!--  First Name and Last Name  -->
+                          <div class="form-group row full-width">
+                            <div class="col first">
+                              <label for="expiry__day"><Name>Expiry Day</Name></label>
+                              <input type="text" id="expiry__day" name="firstName" placeholder="MM/YY" required>
+                            </div>
+                            <div class="col">
+                              <label for="cvv">CVV</label>
+                              <input type="number" id="cvv" name="lastName" placeholder="CVV" required>
+                            </div>
+                          </div>
+                        
+                          <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+              </div>
+            </section>
+
+            <!--=============== TRANSACTIONS ===============-->
+            <section class="container section section__height" id="transactions">
+                <h2 class="section__title">Transactions</h2>
+            </section>
+
+            <!--=============== ME ===============-->
+            <section class="container section section__height" id="me">
+                <h2 class="section__title">Me</h2>
+            </section>
+
+        </main>
+        
+
+        <!--=============== MAIN JS ===============-->
+        <script src="js/main.js"></script>
+        <script src="js/tag.js"></script>
+        <script src="https://kit.fontawesome.com/6386c78e76.js" crossorigin="anonymous"></script>
+    </body>
+</html>
