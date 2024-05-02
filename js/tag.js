@@ -1,19 +1,22 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const startNFCButton = document.getElementById('startNFC');
     const paymentStatus = document.getElementById('paymentStatus');
 
     startNFCButton.addEventListener('click', async () => {
         try {
-            const nfcPermission = await navigator.permissions.query({ name: 'nfc' });
-            if (nfcPermission.state === 'granted') {
-                const reader = new NDEFReader();
-                await reader.scan();
-                paymentStatus.textContent = 'NFC tag detected!';
-                // Process payment logic here based on detected NFC tag
-                processPayment();
+            if ('NDEFReader' in window) {
+                const nfcPermission = await navigator.permissions.query({ name: 'nfc-read' });
+                if (nfcPermission.state === 'granted') {
+                    const reader = new NDEFReader();
+                    await reader.scan();
+                    paymentStatus.textContent = 'NFC tag detected!';
+                    // Process payment logic here based on detected NFC tag
+                    processPayment();
+                } else {
+                    console.error('NFC permission denied by the user.');
+                }
             } else {
-                console.error('NFC permission denied by the user.');
+                console.error('NDEFReader not supported by the browser.');
             }
         } catch (error) {
             console.error('Error accessing NFC functionality:', error);
