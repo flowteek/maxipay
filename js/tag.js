@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const startNFCButton = document.getElementById('startNFC');
     const paymentStatus = document.getElementById('paymentStatus');
 
     startNFCButton.addEventListener('click', async () => {
         try {
             if ('NDEFReader' in window) {
-                const nfcPermission = await navigator.permissions.query({ name: 'nfc-read' });
-                if (nfcPermission.state === 'granted') {
+                const nfcPermission = await navigator.permissions.query({ name: 'nfc' });
+                if (nfcPermission.state === 'granted' || nfcPermission.state === 'prompt') {
                     const reader = new NDEFReader();
                     await reader.scan();
                     paymentStatus.textContent = 'NFC tag detected!';
